@@ -1,0 +1,10 @@
+{
+  "Company": "Demo Company",
+  "Country": "US",
+  "LastName": "Demo",
+  "Email": "Demo@example.com",
+  "Edition": "Developer",
+  "OrgPreferences" : {
+    "S1DesktopEnabled" : true
+  }
+}

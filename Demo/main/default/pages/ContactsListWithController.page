@@ -1,0 +1,47 @@
+<apex:page controller="ContactsListController" tabStyle="Contact">
+    <apex:form >
+        <apex:sectionHeader title="Liste des contacts" />
+        <apex:pageBlock title="Liste des contacts" id="contacts_list">            
+            <!-- Contacts List -->            
+            <apex:pageBlockTable value="{! contacts }" var="ct">            
+                <apex:column value="{! ct.FirstName }">
+                    <apex:facet name="header">
+                        <apex:commandLink action="{! sortByFirstName }" 
+                            reRender="contacts_list">First Name
+                        </apex:commandLink>
+                    </apex:facet>
+                </apex:column>
+                
+                <apex:column value="{! ct.LastName }">
+                    <apex:facet name="header">
+                        <apex:commandLink action="{! sortByLastName }" 
+                            reRender="contacts_list">Last Name
+                        </apex:commandLink>
+                    </apex:facet>
+                </apex:column>                
+                <apex:column value="{! ct.Title }"/>              
+                <apex:column value="{! ct.Email }"/>
+                <apex:column value="{!ct.Fidelite__c}" />
+                <apex:column value="{!ct.Birthdate}"/>
+                
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+        <!--Création d'un contact-->
+    <apex:form >
+    <apex:sectionHeader title="Nouveau contact" />
+        <apex:pageBlock title="Créer un nouveau contact">		
+            <apex:pageMessages />            
+            <apex:pageBlockSection title="Informations">
+                <apex:inputField id="contactFirstName" value="{!contact.FirstName}"/>
+                <apex:inputField id="contactLastName" value="{!contact.LastName}"/>
+                <apex:inputField id="contactTitle" value="{!contact.Title}"/>
+                <apex:inputField id="contactEmail" value="{!contact.Email}"/>
+                <apex:inputField value="{!contact.Fidelite__c}" />
+            </apex:pageBlockSection>
+       <apex:pageBlockButtons location="bottom">
+           <apex:commandButton action="{!save}" value="Save"/>
+       </apex:pageBlockButtons>
+       </apex:pageBlock>
+    </apex:form>
+</apex:page>
